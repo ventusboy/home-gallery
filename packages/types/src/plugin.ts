@@ -1,5 +1,6 @@
 import { ExtractorPlugin } from './extractor'
 import { DatabaseMapperPlugin } from './database'
+import { AstTransformRule } from './search'
 
 export type Plugin = {
   name: string
@@ -14,16 +15,24 @@ export type PluginDependency = {
 }
 
 export type PluginMager = {
+  loadPlugin: (file: string) => void
+  loadPluginDir: (dir: string) => void
   getPlugin: (name: string) => Plugin
+  getPlugins: () => Plugin[]
+  getPluginFactory: () => PluginFactory
 }
 
 export type PluginFactory = {
   getExtractors: () => ExtractorPlugin[]
   getDatabaseMappers: () => DatabaseMapperPlugin[]
-  getSearch: () => void
+  getSearchFactory: () => SearchFactory
   getViewFactory: () => ViewPluginFactory
 }
 
 export type ViewPluginFactory = {
 
+}
+
+export type SearchFactory = {
+  getAstTransformRules: () => AstTransformRule[]
 }
