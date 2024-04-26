@@ -14,12 +14,13 @@ export type PluginDependency = {
   version?: string
 }
 
-export type PluginMager = {
-  loadPlugin: (file: string) => void
-  loadPluginDir: (dir: string) => void
-  getPlugin: (name: string) => Plugin
-  getPlugins: () => Plugin[]
-  getPluginFactory: () => PluginFactory
+export interface PluginMager {
+  getApiVersion(): string
+  loadPlugin(file: string): void
+  loadPluginDir(dir: string): void
+  getPlugin(name: string): Plugin
+  getPlugins(): Plugin[]
+  getPluginFactory(): PluginFactory
 }
 
 export type PluginFactory = {
