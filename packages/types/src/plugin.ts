@@ -1,6 +1,6 @@
 import { ExtractorPlugin } from './extractor'
 import { DatabaseMapperPlugin } from './database'
-import { AstTransformRule } from './search'
+import { AstTransformRule, AstOrderRule } from './search'
 
 export type Plugin = {
   name: string
@@ -36,4 +36,6 @@ export type ViewPluginFactory = {
 
 export type SearchFactory = {
   getAstTransformRules: () => AstTransformRule[]
+  getAstOrderRules: () => AstOrderRule[]
+  stringify: (entry: any) => string
 }

@@ -8,4 +8,3 @@ export type DatabaseMapperPlugin = {
   mapDirectory?: (entries: StorageEntry[], databaseEntries: any[]) => any[]
   mapDatabase?: (databaseEntries: any[]) => any[]
 }
-
