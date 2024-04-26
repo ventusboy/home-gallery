@@ -38,4 +38,5 @@ export type SearchFactory = {
   getAstTransformRules: () => AstTransformRule[]
   getAstOrderRules: () => AstOrderRule[]
   stringify: (entry: any) => string
+  expression: (ast: any, options: any) => any
 }
