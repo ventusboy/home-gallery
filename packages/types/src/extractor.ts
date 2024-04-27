@@ -8,7 +8,7 @@ export type ExtractorPlugin = {
   init?: (context: ExtractorContext, config: any, done: (err: Error | null) => void) => void
   test?: (entry: ExtractorEntry | ExtractorEntry[]) => boolean
   task: (entry: ExtractorEntry | ExtractorEntry[], done: (err: Error | null) => void) => void
-  end?: () => void
+  end?: (done: () => void) => void
 }
 
 /**

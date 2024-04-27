@@ -1,0 +1,41 @@
+{
+  "name": "@home-gallery/plugin-manager",
+  "version": "1.0.0",
+  "description": "Plugin manager",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm-run-all -p build:js build:types",
+    "build:js": "node build.js",
+    "build:types": "npx tsc -d --emitDeclarationOnly",
+    "test": "tap",
+    "watch": "npm-run-all -p watch:js watch:types",
+    "watch:js": "node build.js --watch",
+    "watch:types": "npx tsc -d --emitDeclarationOnly --watch",
+    "watch:test": "tap repl w"
+  },
+  "keywords": [
+    "HomeGallery",
+    "type"
+  ],
+  "author": "Sebastian Felis <sebastian@silef.de>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xemle/home-gallery.git",
+    "directory": "packages/plugin-manager"
+  },
+  "exports": {
+    ".": {
+      "node": "./dist/node.js",
+      "browser": "./dist/index.js"
+    }
+  },
+  "types": "./dist/node.d.ts",
+  "dependencies": {
+    "mustache": "4.2.0"
+  }
+}

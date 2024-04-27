@@ -1,0 +1,20 @@
+{
+  "default": [
+    "build.js",
+    "src/index.ts",
+    "package.json"
+  ],
+  "extractor": [
+    "src/extractor/index.ts"
+  ],
+  "database": [
+    "src/database/index.ts"
+  ],
+  "query": [
+    "src/query/index.ts"
+  ],
+  "webapp": [
+    "src/webapp/index.ts",
+    "rollup.config.js"
+  ]
+}
