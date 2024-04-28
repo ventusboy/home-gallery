@@ -3,10 +3,10 @@ import Logger from '@home-gallery/logger'
 
 const log = Logger('{{ pluginName }}.database')
 
-export class {{ pluginName }}DatabaseMapper extends AbstractDatabaseMapperPlugin {
+export class {{ className }}DatabaseMapper extends AbstractDatabaseMapperPlugin {
   name = '{{ pluginName }}'
-  after: string[] = []
-  priority = 100
+  // after: string[] = []
+  // priority = 100
   
   mapEntry(entry: StorageEntry, databaseEntry: any) {
     log.info(`Map database entry: ${entry}`)

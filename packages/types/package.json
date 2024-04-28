@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "clean": "rimraf dist",
-    "build": "npm-run-all -p build:js build:types",
+    "build": "npm-run-all build:types",
     "build:js": "node build.js",
     "build:types": "npx tsc -d --emitDeclarationOnly",
     "test": "tap",

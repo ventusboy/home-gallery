@@ -1,9 +1,13 @@
 import fs from 'fs/promises'
 import path from 'path'
-
 import Mustache from 'mustache'
 
+import Logger from '@home-gallery/logger'
+
+const log = Logger('plugin.create')
+
 export type CreateOptions = {
+  name: string
   outDir: string
 }
 
@@ -12,34 +16,55 @@ export interface PluginVars {
   withReact: boolean
 }
 
-export const create = async (options: CreateOptions) => {
+export const createPlugin = async (options: any) => {
   const templateDir = path.resolve(__dirname, '..', 'templates')
+
+  const createOptions: CreateOptions = options.config.plugin
   const vars = {
-    pluginName: 'foo',
-    extractor: {
-      phase: 'entry'
-    },
-    database: {
-      
-    },
-    webapp: {
-      
+    name: createOptions.name,
+    className: toClassName(createOptions.name),
+    modules: {
+      extractor: {
+        phase: 'entry'
+      },
+      database: {
+        
+      },
+      query: {
+
+      },
+      webapp: {
+        
+      }
     }
   }
 
-  const templateConfig = await fs.readFile(path.resolve(templateDir, 'template.config.json'))
+  const templateType = 'typescript'
+  const templateConfig = await readJson(path.resolve(templateDir, templateType, 'template.config.json'))
   
-  const files = await readDir(templateDir)
+  const files = [...templateConfig.files]
+  const activeModules = Object.keys(vars.modules || {})
+  activeModules.forEach(module => {
+    files.push(...templateConfig.modules[module])
+  })
 
   for (let file in files) {
     const template = await fs.readFile(path.resolve(templateDir, file), 'utf8')
     const rendered = Mustache.render(template, vars)
     
-    const target = path.resolve(options.outDir, file)
+    const target = path.resolve(createOptions.outDir, file)
     await fs.mkdir(path.dirname(target), {recursive: true})
     await fs.writeFile(target, rendered, 'utf8')
+    log.debug(`Wrote ${target}`)
   }
 }
+
+const readJson = async (file: string): Promise<any> => {
+  const data = await fs.readFile(file, 'utf8')
+  return JSON.parse(data)
+}
+
+const toClassName = (name: string) => name.charAt(0).toUpperCase() + name.slice(1)
 
 const readDir = async (dir: string): Promise<string[]> => {
   const files = await fs.readdir(dir)

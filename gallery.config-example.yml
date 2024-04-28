@@ -175,6 +175,12 @@ sources:
     #- pwa
     #- offlineDatabase
 
+#
+# Plugin settings
+#
+#plugins:
+  #dir: 'plugins'
+
 logger:
   # Currently console and file loggers are available
   - type: console

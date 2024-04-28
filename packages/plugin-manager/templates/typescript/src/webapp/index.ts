@@ -3,7 +3,7 @@ import Logger from '@home-gallery/logger'
 
 const log = Logger('{{ pluginName }}.query')
 
-export class {{ pluginName }}WebAppFactory implements WebAppFactory {
+export class {{ className }}WebAppFactory implements WebAppFactory {
   getComponents() {
     return []
   }

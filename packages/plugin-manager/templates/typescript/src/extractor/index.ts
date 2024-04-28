@@ -3,11 +3,11 @@ import Logger from '@home-gallery/logger'
 
 const log = Logger('{{ pluginName }}.extractor')
 
-export class {{ pluginName }}Extractor {
+export class {{ className }}Extractor {
   name = '{{ pluginName }}'
-  phase = '{{ extractor.phase }}'
-  after = []
-  priority = 100
+  phase = '{{ module.extractor.phase }}'
+  // after = []
+  // priority = 100
   
   init(context: ExtractorContext, config: any, done: (err: Error | null) => void) => {
     done()

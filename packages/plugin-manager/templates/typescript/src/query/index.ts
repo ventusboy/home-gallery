@@ -3,5 +3,5 @@ import Logger from '@home-gallery/logger'
 
 const log = Logger('{{ pluginName }}.query')
 
-export class {{ pluginName }}QueryFactory extends AbstractQueryFactory {
+export class {{ className }}QueryFactory extends AbstractQueryFactory {
 }

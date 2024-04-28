@@ -13,6 +13,7 @@ const fetchCli = require('./fetch');
 const castCli = require('./cast');
 const interactiveCli = require('./interactive');
 const runCli = require('./run')
+const pluginCli = require('./plugin')
 
 const cli = () => {
   yargs.usage('Usage: $0 [global options] <command> [options]')
@@ -30,6 +31,7 @@ const cli = () => {
     .command(castCli)
     .command(interactiveCli)
     .command(runCli)
+    .command(pluginCli)
     .demandCommand()
     .help()
     .alias('h', 'help')
