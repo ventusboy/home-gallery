@@ -44,7 +44,7 @@ const command = {
         }
 
         const setDefaults = config => {
-          config.plugin.outDir = config.plugin.outDir || config.plugins.dir || 'plugins'
+          config.plugin.outDir = config.plugin.outDir || config.plugins?.dir || 'plugins'
         }
         
         const run = async() => {
@@ -63,7 +63,7 @@ const command = {
             log.info(t0, `Created plugin at ${dir}`);
           })
           .catch(err => {
-            log.error(`Plugin creation failed: ${err}`);
+            log.error(err, `Plugin creation failed: ${err}`);
             process.exit(1)
           })
 

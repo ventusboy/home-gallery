@@ -1,10 +1,10 @@
 import { ExtractorContext, ExtractorEntry } from '@home-gallery/types'
 import Logger from '@home-gallery/logger'
 
-const log = Logger('{{ pluginName }}.extractor')
+const log = Logger('{{ name }}.extractor')
 
 export class {{ className }}Extractor {
-  name = '{{ pluginName }}'
+  name = '{{ name }}'
   phase = '{{ module.extractor.phase }}'
   // after = []
   // priority = 100

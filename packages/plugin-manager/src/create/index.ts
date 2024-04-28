@@ -23,6 +23,7 @@ export const createPlugin = async (options: any) => {
   const vars = {
     name: createOptions.name,
     className: toClassName(createOptions.name),
+    onlyWebapp: false,
     modules: {
       extractor: {
         phase: 'entry'
@@ -48,11 +49,11 @@ export const createPlugin = async (options: any) => {
     files.push(...templateConfig.modules[module])
   })
 
-  for (let file in files) {
-    const template = await fs.readFile(path.resolve(templateDir, file), 'utf8')
+  for (let file of files) {
+    const template = await fs.readFile(path.resolve(templateDir, templateType, file), 'utf8')
     const rendered = Mustache.render(template, vars)
     
-    const target = path.resolve(createOptions.outDir, file)
+    const target = path.resolve(createOptions.outDir, createOptions.name, file)
     await fs.mkdir(path.dirname(target), {recursive: true})
     await fs.writeFile(target, rendered, 'utf8')
     log.debug(`Wrote ${target}`)

@@ -1,29 +1,25 @@
 {
   "name": "{{ pluginName }}",
   "scripts": {
-    "build": "npm-run-all {{#backend}}build:backend{{/backend}} {{#webapp}}build:webapp{{/webapp}}",
-    {{#backend}}
+    "build": "npm-run-all {{^onlyWebapp}}build:backend{{/onlyWebapp}} {{#module.webapp}}build:webapp{{/module.webapp}}",
+    {{^onlyWebapp}}
     "build:backend": "node build.js",
-    {{/backend}}
-    {{#database}}
-    "build:database": "rollup -c",
-    {{/database}}
-    {{#query}}
-    "build:query": "rollup -c",
-    {{/query}}
-    {{#webapp}}
+    {{/onlyWebapp}}
+    {{#module.webapp}}
     "build:webapp": "rollup -c",
-    {{/webapp}}
+    {{/module.webapp}}
     "clean": "rimraf dist"
   },
-  {{#webapp}}
+  {{#module.webapp}}
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },
-  {{/webapp}}
+  {{/module.webapp}}
   "devDependencies": {
-    {{#webapp}}
+    {{^onlyWebapp}}
+    {{/onlyWebapp}}
+    {{#module.webapp}}
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@types/react": "^18.0.15",
@@ -38,7 +34,7 @@
     "rollup-plugin-typescript2": "^0.32.1",
     "typescript": "^4.7.4",
     "typescript-plugin-css-modules": "^3.4.0",
-    {{/webapp}}
+    {{/module.webapp}}
     "@home-gallery/types": "1.0.0",
   }
 }

@@ -1,10 +1,10 @@
 import { AbstractDatabaseMapperPlugin } from '@home-gallery/types'
 import Logger from '@home-gallery/logger'
 
-const log = Logger('{{ pluginName }}.database')
+const log = Logger('{{ name }}.database')
 
 export class {{ className }}DatabaseMapper extends AbstractDatabaseMapperPlugin {
-  name = '{{ pluginName }}'
+  name = '{{ name }}'
   // after: string[] = []
   // priority = 100
   

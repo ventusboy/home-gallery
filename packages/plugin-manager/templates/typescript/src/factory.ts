@@ -43,7 +43,7 @@ export class {{ className }}PluginFactory extends AbstractPluginFactory {
       new {{ className }}QueryFactory()
     ]
   }
-  {{/query}}
+  {{/module.query}}
   {{#module.webapp}}
 
   getWebAppFactory() {

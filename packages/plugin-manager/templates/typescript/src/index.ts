@@ -4,7 +4,7 @@ import { PluginManager } from '@home-gallery/plugin-manager'
 import {{ className }}PluginFactory from './factory'
 
 export class {{ className }}Plugin extends Plugin {
-  name = '{{ pluginName }}'
+  name = '{{ name }}'
   version = '1.0'
   // dependencies = []
   async initialize(manager: PluginManager) {
