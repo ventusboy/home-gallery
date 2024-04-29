@@ -6,7 +6,7 @@ export type Plugin = {
   name: string
   version: string
   dependencies?: PluginDependency[]
-  initialize: (manager: PluginMager) => Promise<PluginFactory>
+  initialize: (manager: PluginManager) => Promise<PluginFactory>
 }
 
 export type PluginDependency = {
@@ -14,7 +14,7 @@ export type PluginDependency = {
   version?: string
 }
 
-export interface PluginMager {
+export interface PluginManager {
   getApiVersion(): string
   loadPlugin(file: string): void
   loadPluginDir(dir: string): void

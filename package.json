@@ -83,9 +83,11 @@
     "@home-gallery/fetch": "file:packages/fetch",
     "@home-gallery/index": "file:packages/index",
     "@home-gallery/query": "file:packages/query",
+    "@home-gallery/plugin": "file:packages/plugin",
     "@home-gallery/server": "file:packages/server",
     "@home-gallery/storage": "file:packages/storage",
     "@home-gallery/stream": "file:packages/stream",
-    "@home-gallery/webapp": "file:packages/webapp"
+    "@home-gallery/webapp": "file:packages/webapp",
+    "@home-gallery/types": "file:packages/types"
   }
 }

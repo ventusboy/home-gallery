@@ -1,4 +1,4 @@
-import { PluginMager } from './plugin'
+import { PluginManager } from './plugin'
 import { Storage, StorageEntry } from './storage'
 
 export type ExtractorPlugin = {
@@ -25,7 +25,7 @@ export type ExtratorPhase = 'file' | 'entry' | 'directory'
 
 export type ExtractorContext = {
   storage: Storage
-  plugin: PluginMager
+  PluginManager: PluginManager
 }
 
 export type ExtractorEntry = StorageEntry & {

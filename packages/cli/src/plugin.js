@@ -34,7 +34,7 @@ const command = {
           },
         }),
       (argv) => {
-        const { createPlugin } = require('@home-gallery/plugin-manager')
+        const { createPlugin } = require('@home-gallery/plugin')
         const { load, mapArgs, validatePaths } = require('./config')
 
         const argvMapping = {
