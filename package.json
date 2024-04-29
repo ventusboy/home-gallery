@@ -28,6 +28,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@getgauge/cli": "^1.5.4",
+    "@home-gallery/types": "file:packages/types",
     "@react-leaflet/core": "^2.0.0",
     "@types/glob-to-regexp": "^0.4.0",
     "@types/hammerjs": "^2.0.41",
@@ -87,7 +88,6 @@
     "@home-gallery/server": "file:packages/server",
     "@home-gallery/storage": "file:packages/storage",
     "@home-gallery/stream": "file:packages/stream",
-    "@home-gallery/webapp": "file:packages/webapp",
-    "@home-gallery/types": "file:packages/types"
+    "@home-gallery/webapp": "file:packages/webapp"
   }
 }

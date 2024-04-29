@@ -4,7 +4,8 @@
   "description": "Plugin system for HomeGallery",
   "main": "dist/index.js",
   "files": [
-    "dist"
+    "dist",
+    "templates"
   ],
   "scripts": {
     "clean": "rimraf dist",
@@ -19,7 +20,8 @@
   },
   "keywords": [
     "HomeGallery",
-    "type"
+    "plugin",
+    "extend"
   ],
   "author": "Sebastian Felis <sebastian@silef.de>",
   "license": "MIT",
@@ -37,5 +39,8 @@
   "types": "./dist/node.d.ts",
   "dependencies": {
     "mustache": "4.2.0"
+  },
+  "devDependencies": {
+    "@home-gallery/types": "file:../types"
   }
 }
