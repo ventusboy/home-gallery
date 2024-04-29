@@ -53,7 +53,7 @@ export const createPlugin = async (options: any) => {
     const template = await fs.readFile(path.resolve(templateDir, templateType, file), 'utf8')
     const rendered = Mustache.render(template, vars)
     
-    const target = path.resolve(createOptions.outDir, createOptions.name, file)
+    const target = path.resolve(createOptions.outDir, createOptions.name, file.replace(/\.mustache$/, ''))
     await fs.mkdir(path.dirname(target), {recursive: true})
     await fs.writeFile(target, rendered, 'utf8')
     log.debug(`Wrote ${target}`)

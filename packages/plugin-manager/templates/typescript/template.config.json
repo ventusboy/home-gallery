@@ -1,22 +1,22 @@
 {
   "files": [
     "build.js",
-    "src/index.ts",
-    "src/factory.ts",
-    "package.json"
+    "src/index.ts.mustache",
+    "src/factory.ts.mustache",
+    "package.json.mustache"
   ],
   "modules": {
     "extractor": [
-      "src/extractor/index.ts"
+      "src/extractor/index.ts.mustache"
     ],
     "database": [
-      "src/database/index.ts"
+      "src/database/index.ts.mustache"
     ],
     "query": [
-      "src/query/index.ts"
+      "src/query/index.ts.mustache"
     ],
     "webapp": [
-      "src/webapp/index.ts",
+      "src/webapp/index.ts.mustache",
       "rollup.config.js"
     ]
   }
