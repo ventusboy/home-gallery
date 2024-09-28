@@ -9,7 +9,7 @@ import { getHigherPreviewUrl, getLowerPreviewUrl } from '../utils/preview'
 import { usePreviewSize } from "./usePreviewSize";
 import { classNames } from '../utils/class-names'
 
-export const MediaNav = ({current, prev, next, listLocation, showNavigation, dispatch}) => {
+export const MediaNav = ({index, current, prev, next, listLocation, showNavigation, dispatch}) => {
   const query = useSearchStore(state => state.query);
   const previewSize = usePreviewSize()
 

@@ -9,13 +9,13 @@ import { faPlay } from '@fortawesome/free-solid-svg-icons'
 
 import { useLastLocation } from '../utils/lastLocation/useLastLocation'
 import useBodyDimensions from '../utils/useBodyDimensions';
-import { VirtualScroll } from "./VirtualScroll";
+import { IScrollToRowHandle, IVirtualScrollProps, VirtualScroll } from "./VirtualScroll";
 import { humanizeDuration } from "../utils/format";
 import { getHigherPreviewUrl, getWidthFactor } from '../utils/preview';
 import { classNames } from '../utils/class-names'
 
 const Cell = ({height, width, index, item, items}) => {
-  const ref = useRef();
+  const ref = useRef(null);
   const location = useLocation();
   const viewMode = useEditModeStore(state => state.viewMode);
 
@@ -81,7 +81,7 @@ const Cell = ({height, width, index, item, items}) => {
 
   return (
     <div ref={ref} key={id} className={classNames('relative group', {'outline outline-4 outline-primary-300 outline-offset-[-0.25rem] brightness-110 saturate-[1.3]': isSelected()})} style={style}>
-      <img className={classNames('object-cover')} style={style} src={previewUrl} loading="lazy" />
+      <img className={classNames('object-cover')} style={style} src={previewUrl.toString()} loading="lazy" />
       {type == 'video' &&
         <span className="absolute flex flex-row items-center gap-2 px-2 text-sm text-gray-100 bg-gray-900 rounded bottom-2 right-2 lg:bg-gray-900/60 group-hover:bg-gray-900">
           <FontAwesomeIcon icon={faPlay} size="sm"/>
@@ -122,7 +122,7 @@ export const FluentList = ({rows, padding}) => {
   const lastViewId = useSingleViewStore(state => state.lastId);
   const [lastRowIndex, setLastRowIndex] = useState(-1)
 
-  const virtualScrollRef = useRef(null);
+  const virtualScrollRef = useRef<IScrollToRowHandle>(null);
 
   useLayoutEffect(() => {
     if (!lastViewId) {
@@ -131,7 +131,7 @@ export const FluentList = ({rows, padding}) => {
     const [cell, rowIndex] = findCellById(rows, lastViewId)
     if (cell && lastRowIndex != rowIndex) {
       console.log(`MediaFluent:useLayoutEffect scroll to ${lastViewId} in row ${rowIndex}`)
-      virtualScrollRef.current.scrollToRow({rowIndex});
+      virtualScrollRef.current?.scrollToRowHandle(rowIndex);
       setLastRowIndex(rowIndex)
     } else if (!cell) {
       console.log(`MediaFluent:useLayoutEffect could not find entry with ${lastViewId}`)

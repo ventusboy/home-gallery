@@ -7,7 +7,7 @@ import { usePreviewSize } from "./usePreviewSize";
 import { useClientRect } from '../utils/useClientRect'
 
 export const MediaViewImage = (props) => {
-  const imgRef = useRef<HTMLImageElement>();
+  const imgRef = useRef<HTMLImageElement>(null);
   const imgRect = useClientRect(imgRef);
   const [faceRects, setFaceRects] = useState([]);
   const [objectRects, setObjectRects] = useState([]);
@@ -89,12 +89,12 @@ export const MediaViewImage = (props) => {
 
   return (
     <>
-      <div className="relative w-full h-full">
-        <img ref={imgRef} className="absolute object-contain w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" src={smallUrl} />
+      {src && <div className="relative w-full h-full">
+        <img ref={imgRef} className="absolute object-contain w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" src={smallUrl.toString()} />
         <img className="absolute object-contain w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" src={src} />
         {showAnnotations && objectRects}
         {showAnnotations && faceRects}
-      </div>
+      </div>}
     </>
   )
 }

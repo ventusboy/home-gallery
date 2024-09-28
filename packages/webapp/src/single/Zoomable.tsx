@@ -21,11 +21,12 @@ const containsSize = (containerWidth, containerHeight, childWidth, childHeight) 
 type ZoomableProps = {
   childWidth: number;
   childHeight: number;
+  children: React.ReactElement;
   onSwipe?: (ev: HammerInput) => void
 }
 
 export const Zoomable: FunctionComponent<ZoomableProps> = ({childWidth, childHeight, onSwipe, children}) => {
-  const ref = useRef<HTMLDivElement>();
+  const ref = useRef<HTMLDivElement>(null);
   const [style, setStyle] = useState({});
   const clientRect = useClientRect(ref);
 
